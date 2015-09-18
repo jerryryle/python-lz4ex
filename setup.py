@@ -32,6 +32,7 @@ setup(
                   ),
         Extension('lz4ex.lz4hc',
                   sources = [
+                      'src/lz4/lz4.c',
                       'src/lz4/lz4hc.c',
                       'src/python-lz4hc.c'],
                   define_macros = [
