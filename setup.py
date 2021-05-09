@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages, Extension
 
-VERSION = (0, 0, 1)
+VERSION = (0, 0, 2)
 VERSION_STR = ".".join([str(x) for x in VERSION])
 
 setup(
@@ -12,7 +12,7 @@ setup(
     license='BSD',
     long_description=open('README.md', 'r').read(),
     author='Jerry Ryle',
-    author_email='jerryryle@gmail.com',
+    author_email='jerry@ryle.io',
     url='https://github.com/jerryryle/python-lz4ex',
     packages=['lz4ex'],
     ext_modules=[
