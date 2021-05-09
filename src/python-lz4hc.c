@@ -66,7 +66,7 @@ static PyObject *compress_hc(PyObject *self, PyObject *args, PyObject *keywds)
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
     int compression_level;
 
     static char *kwlist[] = {"source", "compression_level", NULL};
@@ -198,7 +198,7 @@ static PyObject *compress_hc_continue(PyObject *self, PyObject *args, PyObject *
 
     PyObject *py_stream = NULL;
     const char *source = NULL;
-    int source_size = 0;
+    Py_ssize_t source_size = 0;
 
     static char *kwlist[] = {"stream", "source", NULL};
 
@@ -245,7 +245,11 @@ static struct PyModuleDef moduledef = {
         "lz4hc",
         NULL,
         -1,
-        module_methods
+        module_methods,
+        NULL,
+        NULL,
+        NULL,
+        NULL
         };
 
 MODULE_INIT_FUNC(lz4hc)

@@ -76,7 +76,7 @@ static PyObject *compress_frame(PyObject *self, PyObject *args, PyObject *keywds
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
     LZ4F_preferences_t preferences;
 
     memset(&preferences, 0, sizeof(preferences));
@@ -233,7 +233,7 @@ static PyObject *compress_update(PyObject *self, PyObject *args, PyObject *keywd
 
     PyObject *py_context = NULL;
     const char *source = NULL;
-    unsigned long source_size = 0;
+    Py_ssize_t source_size = 0;
 
     static char *kwlist[] = {"context", "source", NULL};
 
@@ -317,7 +317,7 @@ static PyObject *get_frame_info(PyObject *self, PyObject *args, PyObject *keywds
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
 
     static char *kwlist[] = {"source", NULL};
 
@@ -362,7 +362,7 @@ static PyObject *decompress(PyObject *self, PyObject *args, PyObject *keywds)
     (void)self;
 
     char const *source;
-    int source_size;
+    Py_ssize_t source_size;
     int uncompressed_size = 0;
 
     static char *kwlist[] = {"source", "uncompressed_size", NULL};
@@ -455,7 +455,11 @@ static struct PyModuleDef moduledef = {
         "lz4frame",
         NULL,
         -1,
-        module_methods
+        module_methods,
+        NULL,
+        NULL,
+        NULL,
+        NULL
         };
 
 MODULE_INIT_FUNC(lz4frame)

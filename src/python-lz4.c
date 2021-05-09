@@ -85,7 +85,7 @@ static PyObject *compress_default(PyObject *self, PyObject *args, PyObject *keyw
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
 
     static char *kwlist[] = {"source", NULL};
 
@@ -133,7 +133,7 @@ static PyObject *compress_fast(PyObject *self, PyObject *args, PyObject *keywds)
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
     int acceleration_factor;
 
     static char *kwlist[] = {"source", "acceleration_factor", NULL};
@@ -203,7 +203,7 @@ static PyObject *decompress_safe(PyObject *self, PyObject *args, PyObject *keywd
     (void)self;
 
     const char *source;
-    int source_size;
+    Py_ssize_t source_size;
     int dest_size;
 
     static char *kwlist[] = {"source", "dest_size", NULL};
@@ -321,7 +321,7 @@ static PyObject *compress_fast_continue(PyObject *self, PyObject *args, PyObject
 
     PyObject *py_stream = NULL;
     const char *source = NULL;
-    int source_size = 0;
+    Py_ssize_t source_size = 0;
     int acceleration_factor = 1;
 
     static char *kwlist[] = {"stream", "source", "acceleration_factor", NULL};
@@ -446,7 +446,7 @@ static PyObject *decompress_safe_continue(PyObject *self, PyObject *args, PyObje
 
     PyObject *py_stream = NULL;
     const char *source = NULL;
-    int source_size = 0;
+    Py_ssize_t source_size = 0;
 
     static char *kwlist[] = {"stream", "source", NULL};
 
@@ -484,7 +484,11 @@ static struct PyModuleDef moduledef = {
         "lz4",
         NULL,
         -1,
-        module_methods
+        module_methods,
+        NULL,
+        NULL,
+        NULL,
+        NULL
         };
 
 MODULE_INIT_FUNC(lz4)

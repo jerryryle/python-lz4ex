@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages, Extension
 
-VERSION = (0, 0, 1)
+VERSION = (0, 0, 2)
 VERSION_STR = ".".join([str(x) for x in VERSION])
 
 setup(
@@ -12,15 +12,15 @@ setup(
     license='BSD',
     long_description=open('README.md', 'r').read(),
     author='Jerry Ryle',
-    author_email='jerryryle@gmail.com',
+    author_email='jerry@ryle.io',
     url='https://github.com/jerryryle/python-lz4ex',
     packages=['lz4ex'],
     ext_modules=[
         Extension('lz4ex.lz4',
-                  sources = [
+                  sources=[
                       'src/lz4/lz4.c',
                       'src/python-lz4.c'],
-                  define_macros = [
+                  define_macros=[
                       ('LZ4_VERSION', '"%s"' % 'r131'),
                       ('VERSION', '"%s"' % VERSION_STR)],
                   extra_compile_args=[
@@ -31,11 +31,11 @@ setup(
                       "-Wundef"]
                   ),
         Extension('lz4ex.lz4hc',
-                  sources = [
+                  sources=[
                       'src/lz4/lz4.c',
                       'src/lz4/lz4hc.c',
                       'src/python-lz4hc.c'],
-                  define_macros = [
+                  define_macros=[
                       ('LZ4_VERSION', '"%s"' % 'r131'),
                       ('VERSION', '"%s"' % VERSION_STR)],
                   extra_compile_args=[
@@ -46,13 +46,13 @@ setup(
                       "-Wundef"]
                   ),
         Extension('lz4ex.lz4frame',
-                  sources = [
+                  sources=[
                       'src/lz4/lz4.c',
                       'src/lz4/lz4frame.c',
                       'src/lz4/lz4hc.c',
                       'src/lz4/xxhash.c',
                       'src/python-lz4frame.c'],
-                  define_macros = [
+                  define_macros=[
                       ('LZ4_VERSION', '"%s"' % 'r131'),
                       ('VERSION', '"%s"' % VERSION_STR)],
                   extra_compile_args=[
@@ -72,11 +72,9 @@ setup(
         'Intended Audience :: Developers',
         'Programming Language :: C',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
 )
